@@ -3,13 +3,13 @@ import "./ArticleContainer.css";
 import Card from "../Card/Card";
 import { fetchArticles } from "../../utilities/apiCalls";
 
-const StoryContainer = ({ section }) => {
+const ArticleContainer = ({ section }) => {
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetchArticles("Home")
+    fetchArticles("travel")
       .then((response) => {
         if (response.results.length > 0) {
           setLoaded(true);
@@ -24,23 +24,30 @@ const StoryContainer = ({ section }) => {
       });
   }, [section]);
 
-  const storyCards = articles.map((article) => {
+  const filteredStories = articles.filter(article => article.item_type === "Article")
+  const storyCards = filteredStories.map((article) => {
+    const { title, abstract, byline, section, uri, id } = article;
     return (
       <Card
-        title={article.title}
-        key={article.id}
-        image={article.url}
-        id={article.id}
+        title={title}
+        abstract={abstract}
+        byline={byline}
+        key={uri}
+        section={section}
+        url={article.short_url}
+        image={article.multimedia[0].url}
+        alt={article.multimedia[0].caption}
+        id={id}
       />
     );
   });
   if (loaded) {
     return (
-      <section className="stories-container">
+      <section className="article-container">
         <div className="story-cards">{storyCards}</div>
       </section>
     );
   }
 };
 
-export default StoryContainer;
+export default ArticleContainer
