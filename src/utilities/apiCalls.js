@@ -1,6 +1,6 @@
 const apiKey = process.env.REACT_APP_API_KEY
 
-const fetchStories = async (section) => {
+const fetchArticles = async (section) => {
   const response = await fetch(
     `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`,
     {
@@ -12,4 +12,4 @@ const fetchStories = async (section) => {
   return await response.json();
 };
 
-export {fetchStories}
+export { fetchArticles }
