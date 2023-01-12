@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ title, abstract, byline, alt, image, section }) => {
+const Card = ({ title, alt, image }) => {
   return (
     <Link to={`/article/${encodeURIComponent(title)}`}>
       <section className="article-card">

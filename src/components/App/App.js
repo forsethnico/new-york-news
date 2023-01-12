@@ -23,11 +23,9 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(section)
     fetchArticles(section)
       .then((response) => {
         if (response.results.length > 0) {
-          console.log(response);
           setArticles(response.results);
         } else {
           setError("Failed to fetch data. Try again.");
@@ -45,12 +43,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <ArticleContainer
-              articles={articles}
-              onLoad={() => {}}
-            />
-          }
+          element={<ArticleContainer articles={articles} onLoad={() => {}} />}
         />
         <Route
           path="/section/:section"

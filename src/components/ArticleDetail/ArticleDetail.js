@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import React from "react";
 
 const ArticleDetail = ({ articles }) => {
   const { articleTitle } = useParams();
@@ -18,7 +19,7 @@ const ArticleDetail = ({ articles }) => {
         src={article.multimedia[1].url}
         alt={article.multimedia[1].caption}
       ></img>
-      <p>Image Caption: {article.multimedia[1].caption}</p>
+      <p>Caption: {article.multimedia[1].caption}</p>
       <p>Abstract: {abstract}</p>
       <a href={article.url}>
         <h4>Read full article</h4>
