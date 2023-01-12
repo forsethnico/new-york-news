@@ -7,7 +7,7 @@ const ArticleDetail = ({ articles }) => {
     (article) => article.title === decodedArticleTitle
   );
   const { title, byline, abstract } = article;
-  const date = new Date(article.published_date)
+  const date = new Date(article.published_date);
   return (
     <section className="article-detail-container">
       <h1>{title}</h1>

@@ -12,4 +12,8 @@ html {
   font-family: 'Gentium Book Basic', serif;
 }
 
+a:visited {
+  text-decoration: none;
+}
+
 
