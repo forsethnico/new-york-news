@@ -14,18 +14,21 @@
 The New York News is an application that displays top stories sourced from the New York Times API. The user can select a specific category to view articles from and then click to a more detailed view of article info. This was initially created as a take home challenge simulation completed in around 8 hours. 
 
 ## Links
-- [Project spec](https://mod4.turing.edu/projects/take_home/)
+- [Project Spec](https://mod4.turing.edu/projects/take_home/)
 - [Project Board](https://github.com/users/forsethnico/projects/6)
-- [NYT Top Stores API](https://developer.nytimes.com/docs/top-stories-product/1/overview)
+- [NYT Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 - [WireFrame](https://www.figma.com/file/TX1iXUXdoRsusPELU8EqPc/Untitled?node-id=0%3A1&t=bGpRhpZYG62hT633-0)
 - [Deployed Project](https://new-york-news.vercel.app/)
 
-## Learning Goals 
-- Use the New York Times Top Stories API to prioritize and create a minimum viable product (MVP) that meets the specifications of the user stories
-- Showcase a strong understanding of React JS and Front-End best practices
+## Learning Goals
+Use the New York Times Top Stories API to prioritize time and features to create a minimum viable product (MVP) that showcases a strong understanding of React and Front-End principles and meets the specifications of the user stories below:
+1. A list of articles
+2. A “detailed” view for each article (as opposed to summary/list view)
+3. Articles in the list must link to the detailed article view you create
+4. Some sort of search, filter, OR sort
 
 ## Features
-When the avid news reader visits the homepage of The New York News app, the user is greeted with a list of top stories from the home page of New York Times. Then the user can select a new category to view its articles using the nav bar at the top. Then click on an individual article to link to a more detailed view of article info. 
+When the avid news reader visits the homepage of The New York News app, the user is greeted with a list of top stories from the home page of New York Times. Then the user can select a new category to view its corresponding articles using the nav bar. Then click on an individual article to link to a more detailed view of the article. 
 
 ## Setup
 1. Fork this repo - on the top right corner of this page, click the **Fork** button. 
