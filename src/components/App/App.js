@@ -23,6 +23,7 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log(section)
     fetchArticles(section)
       .then((response) => {
         if (response.results.length > 0) {
@@ -47,7 +48,7 @@ const App = () => {
           element={
             <ArticleContainer
               articles={articles}
-              onLoad={(newSection) => setSection(newSection)}
+              onLoad={() => {}}
             />
           }
         />
@@ -61,7 +62,7 @@ const App = () => {
           }
         />
         <Route
-          path="/article/:title"
+          path="/article/:articleTitle"
           element={<ArticleDetail articles={articles} />}
         />
       </Routes>
