@@ -1,0 +1,16 @@
+.nav-links{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.category-text {
+    text-decoration: none;
+    color: black;
+}
+
+.category-text:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}

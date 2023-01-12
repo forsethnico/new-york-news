@@ -3,13 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 90%;
 }
-.story-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+
 
 

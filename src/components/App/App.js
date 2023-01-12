@@ -1,25 +1,72 @@
-import React from 'react';
-import ArticleContainer from "../ArticleContainer/ArticleContainer";
-// import ArticleDetail from "../ArticleDetail/ArticleDetail";
-import Header from '../Header/Header'
-import "./App.css";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from '../NavBar/NavBar'
+import { fetchArticles } from "../../utilities/apiCalls";
+import Header from "../Header/Header";
+import NavBar from "../NavBar/NavBar";
+import ArticleContainer from "../ArticleContainer/ArticleContainer";
+import ArticleDetail from "../ArticleDetail/ArticleDetail";
+import "./App.css";
 
-function App() {
+const categories = [
+  "travel",
+  "health",
+  "business",
+  "sports",
+  "arts",
+  "technology",
+  "politics",
+];
 
+const App = () => {
+  const [articles, setArticles] = useState([]);
+  const [section, setSection] = useState("home");
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchArticles(section)
+      .then((response) => {
+        if (response.results.length > 0) {
+          console.log(response);
+          setArticles(response.results);
+        } else {
+          setError("Failed to fetch data. Try again.");
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, [section]);
 
   return (
     <div className="App">
-      <Header/>
-      <NavBar/>
+      <Header />
+      <NavBar categories={categories} />
       <Routes>
-        <Route path='/' element={<ArticleContainer />} />
-        {/* <Route path={`/${section}`} element= {<StoryContainer />} /> */}
-        {/* <Route path="/:id" element={<ArticleDetail/>} /> */}
+        <Route
+          path="/"
+          element={
+            <ArticleContainer
+              articles={articles}
+              onLoad={(newSection) => setSection(newSection)}
+            />
+          }
+        />
+        <Route
+          path="/section/:section"
+          element={
+            <ArticleContainer
+              articles={articles}
+              onLoad={(newSection) => setSection(newSection)}
+            />
+          }
+        />
+        <Route
+          path="/article/:title"
+          element={<ArticleDetail articles={articles} />}
+        />
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
