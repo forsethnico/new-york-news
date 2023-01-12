@@ -1,16 +1,17 @@
-// import React from "react";
-// import "./NavBar.css";
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.css";
 
-// const categories = ['Travel', 'Science', 'Business', 'Technology', 'Fashion', 'Health', 'Politics', 'Sports', 'Arts']
+const NavBar = ({ categories }) => {
+  const allCategories = categories.map((category) => {
+    return (
+      <Link to={`/section/${category}`} key={category} className="category-text">
+        {category.toUpperCase()}
+      </Link>
+    );
+  });
 
-// const NavBar = () => {
-//     // const allCategories = categories.map(section => {
-//     //     return (
-        
+  return <section className="nav-links">{allCategories}</section>;
+};
 
-//     //     )
-//     // })
-
-// }
-
-// export default NavBar
+export default NavBar;

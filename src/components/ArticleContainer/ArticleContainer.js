@@ -1,32 +1,20 @@
-import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./ArticleContainer.css";
 import Card from "../Card/Card";
-import { fetchArticles } from "../../utilities/apiCalls";
+import { useEffect } from "react";
 
-const ArticleContainer = ({ section }) => {
-  const [error, setError] = useState(null);
-  const [loaded, setLoaded] = useState(false);
-  const [articles, setArticles] = useState([]);
+const ArticleContainer = ({ onLoad, articles }) => {
+  let params = useParams();
 
   useEffect(() => {
-    fetchArticles("travel")
-      .then((response) => {
-        if (response.results.length > 0) {
-          setLoaded(true);
-          console.log(response);
-          setArticles(response.results);
-        } else {
-          setError("Failed to fetch data. Try again.");
-        }
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }, [section]);
+    onLoad(params.section);
+  }, [params.section]);
 
-  const filteredStories = articles.filter(article => article.item_type === "Article")
+  const filteredStories = articles.filter(
+    (article) => article.item_type === "Article" && article.multimedia
+  );
   const storyCards = filteredStories.map((article) => {
-    const { title, abstract, byline, section, uri, id } = article;
+    const { title, abstract, byline, section, uri } = article;
     return (
       <Card
         title={title}
@@ -37,17 +25,15 @@ const ArticleContainer = ({ section }) => {
         url={article.short_url}
         image={article.multimedia[0].url}
         alt={article.multimedia[0].caption}
-        id={id}
       />
     );
   });
-  if (loaded) {
-    return (
-      <section className="article-container">
-        <div className="story-cards">{storyCards}</div>
-      </section>
-    );
-  }
+
+  return (
+    <section className="article-container">
+      <div>{storyCards}</div>
+    </section>
+  );
 };
 
-export default ArticleContainer
+export default ArticleContainer;
