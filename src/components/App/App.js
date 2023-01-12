@@ -26,7 +26,6 @@ const App = () => {
     fetchArticles(section)
       .then((response) => {
         if (response.results.length > 0) {
-          console.log(response);
           setArticles(response.results);
         } else {
           setError("Failed to fetch data. Try again.");
@@ -44,12 +43,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <ArticleContainer
-              articles={articles}
-              onLoad={(newSection) => setSection(newSection)}
-            />
-          }
+          element={<ArticleContainer articles={articles} onLoad={() => {}} />}
         />
         <Route
           path="/section/:section"
@@ -61,7 +55,7 @@ const App = () => {
           }
         />
         <Route
-          path="/article/:title"
+          path="/article/:articleTitle"
           element={<ArticleDetail articles={articles} />}
         />
       </Routes>

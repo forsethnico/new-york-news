@@ -31,7 +31,7 @@ const ArticleContainer = ({ onLoad, articles }) => {
 
   return (
     <section className="article-container">
-      <div>{storyCards}</div>
+      <div className="story-cards">{storyCards}</div>
     </section>
   );
 };
