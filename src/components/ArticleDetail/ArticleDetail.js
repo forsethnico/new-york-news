@@ -15,14 +15,15 @@ const ArticleDetail = ({ articles }) => {
       <h4>Published Date: {date.toDateString()}</h4>
       <h4>{byline}</h4>
       <img
-        className="story-image"
+        className="detail-image"
         src={article.multimedia[1].url}
         alt={article.multimedia[1].caption}
       ></img>
-      <p>Caption: {article.multimedia[1].caption}</p>
+      {article.multimedia[1]?.caption &&
+      <p className="caption">Caption: {article.multimedia[1].caption}</p>}
       <p>Abstract: {abstract}</p>
       <a href={article.url}>
-        <h4>Read full article</h4>
+        <h4>Read full article on NYT</h4>
       </a>
     </section>
   );

@@ -1,13 +1,16 @@
 .story-image {
-  width: 80%;
-  padding: 1rem;
+  position: absolute;
+  width: 12rem;
+  height: 8rem;
+  object-fit: cover;
+  padding: 8rem 0 0 0;
 }
 
 .article-card {
   width: 15rem;
+  height: 18rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   border: 4px solid black;
